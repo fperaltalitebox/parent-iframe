@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  function handleButtonClick(e) {
+    const input = document.getElementById("message")
+    document.getElementById("iframe").contentWindow.postMessage(input.value, "*");
+    console.log("Button clicked in the frame");
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input id="message" />
+      <button onClick={handleButtonClick}>Send</button>
+      <iframe id="iframe" src="http://localhost:3000/d-solo/uGgDky17k/fusebit?orgId=1&from=1642414479747&to=1642436079747&panelId=2&refresh=5s" width="450" height="200" frameborder="0"></iframe> 
     </div>
   );
 }
